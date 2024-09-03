@@ -42,8 +42,8 @@ def slice(image_path, tile_size, output_dir):
         print(f"An error occurred: {e}")
 
 # Parameters for slicing
-image_path = 'mapimage1.jfif'  # Path to the original image
-tile_size = 15  # Size of each tile (e.g., 15x15 pixels)
+image_path = 'forgotten_realms.jpeg'  # Path to the original image
+tile_size = 12  # Size of each tile (e.g., 15x15 pixels)
 output_dir = 'output_tiles'  # Directory to save the tiles
 
 # Run the slicing function

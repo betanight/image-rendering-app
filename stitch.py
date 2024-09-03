@@ -10,7 +10,7 @@ def stitch(output_dir, tile_size, x_tiles, y_tiles, output_image_path):
         # Create a new blank image with the appropriate size
         stitched_img = Image.new('RGB', (img_width, img_height))
         
-        # Loop through each tile and paste it into the correct position in the stitched image
+        # Loop through each tile and paste it to return the original image
         for i in range(x_tiles):
             for j in range(y_tiles):
                 # Construct the filename for the tile
@@ -34,11 +34,10 @@ def stitch(output_dir, tile_size, x_tiles, y_tiles, output_image_path):
         print(f"An error occurred: {e}")
 
 # Parameters for the stitching function
-output_dir = 'output_tiles'  # Directory where the tiles are saved
-tile_size = 15  # Size of each tile (must match the tile size used during slicing)
-x_tiles = 15  # Number of tiles along the x-axis
-y_tiles = 15  # Number of tiles along the y-axis
+output_dir = 'output_tiles'  # directory where the tiles are saved
+tile_size = 12  # Size of each tile (must match the tile size used during slicing)
+x_tiles = 107  # Number of tiles along the x-axis
+y_tiles = 72  # Number of tiles along the y-axis
 output_image_path = 'stitched_image.png'  # Path where the stitched image will be saved
 
-# Run the stitching function
 stitch(output_dir, tile_size, x_tiles, y_tiles, output_image_path)
