@@ -10,14 +10,9 @@ def slice(image_path, tile_size, output_dir):
         # Print image dimensions for debugging
         print(f"Image dimensions: width={img_width}, height={img_height}")
 
-        # Adjust tile size if necessary
-        if tile_size > img_width or tile_size > img_height:
-            print(f"Adjusting tile size from {tile_size} to the smaller dimension of the image.")
-            tile_size = min(img_width, img_height)
-        
         # Calculate the number of tiles needed
-        x_tiles = (img_width + tile_size - 1) // tile_size
-        y_tiles = (img_height + tile_size - 1) // tile_size
+        x_tiles = img_width // tile_size
+        y_tiles = img_height // tile_size
 
         # Print the number of tiles
         print(f"Number of tiles: x_tiles={x_tiles}, y_tiles={y_tiles}")
@@ -32,8 +27,8 @@ def slice(image_path, tile_size, output_dir):
                 # Define the box to extract
                 left = i * tile_size
                 upper = j * tile_size
-                right = min(left + tile_size, img_width)
-                lower = min(upper + tile_size, img_height)
+                right = left + tile_size
+                lower = upper + tile_size
                 
                 # Crop the image
                 tile = img.crop((left, upper, right, lower))
@@ -46,9 +41,9 @@ def slice(image_path, tile_size, output_dir):
     except Exception as e:
         print(f"An error occurred: {e}")
 
-# Parameters
+# Parameters for slicing
 image_path = 'mapimage1.jfif'  # Path to the original image
-tile_size = 100  # Adjusted size of each tile (e.g., 100x100 pixels)
+tile_size = 15  # Size of each tile (e.g., 15x15 pixels)
 output_dir = 'output_tiles'  # Directory to save the tiles
 
 # Run the slicing function
