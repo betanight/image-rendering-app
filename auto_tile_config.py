@@ -4,9 +4,15 @@ from PIL import Image
 from slice import slice_image
 from stitch import stitch_images
 
-def calculate_tile_size(img_width, img_height):
+def calculate_tile_size(img_width, img_height, min_size=10, max_size=100):
     # Calculate the greatest common divisor (GCD) for the width and height
-    return math.gcd(img_width, img_height)
+    gcd_value = math.gcd(img_width, img_height)
+    
+    # Clamp the GCD within the min_size and max_size range
+    tile_size = max(min(gcd_value, max_size), min_size)
+
+    print(f"Calculated tile size (clamped between {min_size} and {max_size}): {tile_size}")
+    return tile_size
 
 def process_image(image_path):
     try:
@@ -16,7 +22,7 @@ def process_image(image_path):
         
         # Calculate the optimal tile size
         tile_size = calculate_tile_size(img_width, img_height)
-        print(f"Calculated tile size: {tile_size}x{tile_size} pixels")
+        print(f"Using tile size: {tile_size}x{tile_size} pixels")
 
         # Determine the number of tiles along each axis
         x_tiles = img_width // tile_size
@@ -41,5 +47,5 @@ def process_image(image_path):
 
 if __name__ == "__main__":
     # Specify the image path here
-    image_path = 'forgotten_realms.jpeg'  # Update this with the actual image path
+    image_path = 'SpooksImage.jfif'  # Update this with the actual image path
     process_image(image_path)
