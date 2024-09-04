@@ -1,7 +1,7 @@
 from PIL import Image
 import os
 
-def stitch(output_dir, tile_size, x_tiles, y_tiles, output_image_path):
+def stitch_images(output_dir, tile_size, x_tiles, y_tiles, output_image_path):
     try:
         # Determine the dimensions of the stitched image
         img_width = x_tiles * tile_size
@@ -10,7 +10,7 @@ def stitch(output_dir, tile_size, x_tiles, y_tiles, output_image_path):
         # Create a new blank image with the appropriate size
         stitched_img = Image.new('RGB', (img_width, img_height))
         
-        # Loop through each tile and paste it to return the original image
+        # Loop through each tile and paste it to recreate the original image
         for i in range(x_tiles):
             for j in range(y_tiles):
                 # Construct the filename for the tile
@@ -32,12 +32,3 @@ def stitch(output_dir, tile_size, x_tiles, y_tiles, output_image_path):
     
     except Exception as e:
         print(f"An error occurred: {e}")
-
-# Parameters for the stitching function
-output_dir = 'output_tiles'  # directory where the tiles are saved
-tile_size = 12  # Size of each tile (must match the tile size used during slicing)
-x_tiles = 107  # Number of tiles along the x-axis
-y_tiles = 72  # Number of tiles along the y-axis
-output_image_path = 'stitched_image.png'  # Path where the stitched image will be saved
-
-stitch(output_dir, tile_size, x_tiles, y_tiles, output_image_path)

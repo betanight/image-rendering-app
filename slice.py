@@ -1,7 +1,7 @@
 from PIL import Image
 import os
 
-def slice(image_path, tile_size, output_dir):
+def slice_image(image_path, tile_size, output_dir):
     try:
         # Load the image
         img = Image.open(image_path)
@@ -40,11 +40,3 @@ def slice(image_path, tile_size, output_dir):
     
     except Exception as e:
         print(f"An error occurred: {e}")
-
-# Parameters for slicing
-image_path = 'forgotten_realms.jpeg'  # Path to the original image
-tile_size = 12  # Size of each tile (e.g., 15x15 pixels)
-output_dir = 'output_tiles'  # Directory to save the tiles
-
-# Run the slicing function
-slice(image_path, tile_size, output_dir)

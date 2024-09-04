@@ -1,0 +1,5 @@
+{
+    "default_tile_size": 256,
+    "output_directory": "output_tiles",
+    "image_path": "image1.png"
+}
